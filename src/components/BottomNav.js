@@ -10,9 +10,9 @@ const BottomNav = ({navigation, state}) => {
       selectedIndex={state.index}
       onSelect={index => navigation.navigate(state.routeNames[index])
       }>
-      <BottomNavigationTab  title='USERS'/>
-      <BottomNavigationTab  title='ORDERS'/>
-      <BottomNavigationTab title='TRANSACTIONS'/>
+      <BottomNavigationTab  title='Home'/>
+      <BottomNavigationTab  title='Walk'/>
+      <BottomNavigationTab title='Users'/>
     </BottomNavigation>
   );
 };

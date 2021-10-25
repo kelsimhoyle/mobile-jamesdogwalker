@@ -84,3 +84,5 @@ amplifytools.xcconfig
 
 package-lock.json
 amplify/team-provider-info.json
+
+src/constants/googleMapKey.js

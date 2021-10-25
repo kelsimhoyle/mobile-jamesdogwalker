@@ -1,6 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/Home';
+import Walk from "../screens/Walk";
 import BottomNav from '../components/BottomNav';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -12,7 +13,7 @@ const AuthRoute = () => (
         initialRouteName='Home'
     >
         <Screen name="Home" component={Home} />
-        <Screen name="Home2" component={Home} />
+        <Screen name="Walk" component={Walk} />
         <Screen name="Home3" component={Home} />
 
     </Navigator >
