@@ -9,16 +9,17 @@
 import React, { useContext, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer, IconRegistry } from '@react-navigation/native';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
+import { ApplicationProvider  } from '@ui-kitten/components';
 import { AuthContext } from './contexts/AuthContext';
 
+import AuthRoute from './routes/AuthRoute';
+import Auth from "./auth/Auth"
 
 import Amplify, { } from 'aws-amplify';
-import Auth from "./auth/Auth";
 import config from '../aws-exports';
 
 Amplify.configure({
@@ -26,9 +27,6 @@ Amplify.configure({
 });
 
 
-import Home from './screens/Home';
-
-const Stack = createNativeStackNavigator();
 
 const App = () => {
   const { currentView, user, checkAuth } = useContext(AuthContext);
@@ -38,17 +36,15 @@ const App = () => {
   }, [])
 
   return (
-    <NavigationContainer>
-      <ApplicationProvider {...eva} theme={eva.light}>
-        {currentView === 'MainNav' ? (
-          <Stack.Navigator initialRoutName="Home">
-            <Stack.Screen name="Home" component={Home} />
-          </Stack.Navigator>
-        ) : <Auth />}
+      <NavigationContainer>
+      {/* <IconRegistry icons={EvaIconsPack} /> */}
 
-
-      </ApplicationProvider>
-    </NavigationContainer>
+        <ApplicationProvider {...eva} theme={eva.light}>
+          {currentView === 'MainNav' ? (
+           <AuthRoute />
+          ) : <Auth />}
+        </ApplicationProvider>
+      </NavigationContainer>
   );
 };
 
